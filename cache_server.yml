@@ -1,11 +1,3 @@
 ---
-- become: 'yes'
-  environment:
-    ftp_proxy: '{{ ftp_proxy | default() }}'
-    http_proxy: '{{ http_proxy | default() }}'
-    https_proxy: '{{ https_proxy | default() }}'
-  hosts: cache_server
-  name: cache_server
-  roles:
-  - common
-  - cache_server
+- import_playbook: cache_server_setup.yml
+- import_playbook: cache_server_deploy.yml

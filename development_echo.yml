@@ -1,12 +1,3 @@
 ---
-- become: 'yes'
-  environment:
-    ftp_proxy: '{{ ftp_proxy | default() }}'
-    http_proxy: '{{ http_proxy | default() }}'
-    https_proxy: '{{ https_proxy | default() }}'
-  hosts: development_echo
-  name: development_echo
-  roles:
-  - common
-  - development
-  - development_echo
+- import_playbook: development_echo_setup.yml
+- import_playbook: development_echo_deploy.yml
