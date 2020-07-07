@@ -7,4 +7,5 @@
   hosts: k8s
   name: k8s_deploy
   roles:
+  - common_deploy
   - k8s_deploy
