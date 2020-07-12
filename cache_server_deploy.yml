@@ -5,6 +5,6 @@
     http_proxy: '{{ http_proxy | default() }}'
     https_proxy: '{{ https_proxy | default() }}'
   hosts: cache_server
-  name: cache_server
+  name: cache_server_deploy
   roles:
   - common_deploy

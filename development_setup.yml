@@ -5,7 +5,7 @@
     http_proxy: '{{ http_proxy | default() }}'
     https_proxy: '{{ https_proxy | default() }}'
   hosts: development
-  name: development
+  name: development_setup
   roles:
   - common_setup
   - development
