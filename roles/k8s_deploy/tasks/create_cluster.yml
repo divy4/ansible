@@ -1,8 +1,4 @@
 ---
-- changed_when: false
-  name: 'create_cluster : Pull kubeadm images'
-  shell:
-    cmd: kubeadm config images pull
 - name: 'create_cluster : Initialize first master'
   shell:
     cmd: >-
