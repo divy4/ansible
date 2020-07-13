@@ -1,5 +1,5 @@
 ---
 - changed_when: false
-  name: 'prepare_node : Pull kubeadm images'
+  name: 'pull_images : Pull kubeadm images'
   shell:
     cmd: kubeadm config images pull
