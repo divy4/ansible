@@ -15,3 +15,8 @@
       k8s_deploy_group.control_plane_endpoint }}" --pod-network-cidr="{{
       k8s_deploy_role.pod_network_cidr }}"
   when: cluster_check.failed and "primary_master" in group_names
+- k8s:
+    definition: '{{ lookup("file", "flannel.yml") }}'
+    kubeconfig: /etc/kubernetes/admin.conf
+    state: present
+  name: 'create_cluster : Apply Flannel network plugin'
