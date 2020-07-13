@@ -15,6 +15,15 @@
       k8s_deploy_group.control_plane_endpoint }}" --pod-network-cidr="{{
       k8s_deploy_role.pod_network_cidr }}"
   when: cluster_check.failed and "primary_master" in group_names
+- name: 'create_cluster : Remove taint from masters that are also workers'
+  ignore_errors: 'yes'
+  changed_when: result is succeeded
+  register: result
+  shell:
+    cmd: >-
+      kubectl taint node {{ inventory_hostname }}
+      node-role.kubernetes.io/master-
+  when: '"masters" in group_names and "workers" in group_names'
 - k8s:
     definition: '{{ lookup("file", "flannel.yml") }}'
     kubeconfig: /etc/kubernetes/admin.conf
