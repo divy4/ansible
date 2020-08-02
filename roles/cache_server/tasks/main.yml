@@ -13,3 +13,10 @@
   service:
     enabled: 'yes'
     name: squid
+    state: started
+- name: 'cache_server : Allow traffic on port 3128'
+  ufw:
+    direction: in
+    proto: tcp
+    rule: allow
+    to_port: '3128'
