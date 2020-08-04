@@ -6,6 +6,7 @@
 - name: 'configure_firewall : ufw : Deny incoming traffic by default'
   ufw:
     default: deny
+    direction: incoming
 - name: 'configure_firewall : ufw : Limit ssh traffic'
   ufw:
     direction: in
