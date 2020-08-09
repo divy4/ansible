@@ -1,0 +1,6 @@
+---
+- k8s:
+    definition: '{{ lookup("file", "calico.yaml") }}'
+    kubeconfig: /etc/kubernetes/admin.conf
+    state: present
+  name: 'install_cni_plugin : Apply Calico network plugin'
