@@ -15,9 +15,28 @@
       k8s_deploy_group.control_plane_endpoint }}" --pod-network-cidr="{{
       k8s_deploy_role.pod_network_cidr }}"
   when: cluster_check.failed and "primary_master" in group_names
-- name: 'create_cluster : Remove taint from masters that are also workers'
+- k8s:
+    kind: '{{ item.kind }}'
+    kubeconfig: /etc/kubernetes/admin.conf
+    name: '{{ item.name }}'
+    namespace: kube-system
+    wait: 'yes'
+  loop:
+  - kind: DaemonSet
+    name: kube-proxy
+  - kind: Pod
+    name: 'kube-apiserver-{{ inventory_hostname }}'
+  - kind: Pod
+    name: 'kube-controller-manager-{{ inventory_hostname }}'
+  - kind: Pod
+    name: 'kube-scheduler-{{ inventory_hostname }}'
+  - kind: Pod
+    name: 'etcd-{{ inventory_hostname }}'
+  name: 'create_cluster : Wait for kube-system resources'
+  when: '"masters" in group_names'
+- changed_when: result is succeeded
   ignore_errors: 'yes'
-  changed_when: result is succeeded
+  name: 'create_cluster : Remove taint from masters that are also workers'
   register: result
   shell:
     cmd: >-
