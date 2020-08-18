@@ -13,4 +13,4 @@
     cmd: makepkg
 - name: 'install_slack : install'
   pacman:
-    name: '/tmp/slack-desktop/slack-desktop-{{ development_echo.install_slack.version }}-{{ development_echo.install_slack.subversion }}-x86_64.pkg.tar.xz'
+    name: '/tmp/slack-desktop/slack-desktop-{{ development_echo.install_slack.version }}-{{ development_echo.install_slack.subversion }}-x86_64.pkg.tar.zst'
