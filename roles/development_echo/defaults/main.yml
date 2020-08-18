@@ -7,8 +7,8 @@ development_echo:
       checksum: 'sha256:9678eb726d6870e8eded204190357a0f494ed9d1803781b4bb80dde6427b086e'
       version: 2.16.3
     helm3:
-      checksum: 'sha256:e6be589df85076108c33e12e60cfb85dcd82c5d756a6f6ebc8de0ee505c9fd4c'
-      version: 3.1.2
+      checksum: 'sha256:ff4ac230b73a15d66770a65a037b07e08ccbce6833fbd03a5b84f06464efea45'
+      version: 3.3.0
   install_slack:
     commit_hash: d9499398e120e2e07cf677ca3f699751cc12458a
     subversion: 1
