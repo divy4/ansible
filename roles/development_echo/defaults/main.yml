@@ -14,5 +14,5 @@ development_echo:
     subversion: 1
     version: 4.8.0
   install_sops:
-    checksum: 'sha256:610FCA9687D1326EF2E1A66699A740F5DBD5AC8130190275959DA737EC52F096'
-    version: 3.5.0
+    checksum: 'sha256:280CA39D21E6740DFA5332B12EF41698ACF014E5F277C5C296C61E83B4CCAD21'
+    version: 3.6.0
