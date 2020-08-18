@@ -3,7 +3,7 @@
   package:
     name:
     - base-devel # Base development tools
-    - bind-tools # Network debugging tools
+    - bind # Network debugging tools
     - bmon # Network monitor
     - chromium # Internet browser
     - code # GUI text editor
