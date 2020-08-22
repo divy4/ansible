@@ -46,3 +46,12 @@
     proto: any
     route: 'yes'
     rule: allow
+- loop:
+  - '{{ k8s_deploy_role.ingress.ports.http }}'
+  - '{{ k8s_deploy_role.ingress.ports.https }}'
+  name: 'configure_firewall : Allow all access to ingress ports'
+  ufw:
+    direction: in
+    proto: tcp
+    rule: allow
+    to_port: '{{ item }}'
