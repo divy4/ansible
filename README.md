@@ -41,12 +41,6 @@ qualify to be in deploy roles. Note that installing updates should be part of
 setup roles, as deploy roles are only concerned with deploying what is
 _currently_ installed by it's setup role.
 
-The only exceptions to this rule are roles whose tasks all fall into either a
-setup role or a deploy role. In this case, the additional `_setup` or `_deploy`
-in the name can be dropped. However, it is possible that the _playbook_ that
-executes this role will still be split up into setup and deploy playbooks as
-the common role has a deploy component (e.g. setting the hostname).
-
 ### Variable Layout and Precedence
 
 Remember [Chef attributes](https://docs.chef.io/attributes/)?

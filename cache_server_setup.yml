@@ -7,5 +7,4 @@
   hosts: cache_server
   name: cache_server_setup
   roles:
-  - common_setup
-  - cache_server
+  - cache_server_setup

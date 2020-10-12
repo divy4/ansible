@@ -4,7 +4,7 @@
     ftp_proxy: '{{ ftp_proxy | default() }}'
     http_proxy: '{{ http_proxy | default() }}'
     https_proxy: '{{ https_proxy | default() }}'
-  hosts: cache_server
-  name: cache_server_deploy
+  hosts: all
+  name: common_setup
   roles:
-  - common_deploy
+  - common_setup

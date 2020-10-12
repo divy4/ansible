@@ -7,5 +7,4 @@
   hosts: k8s
   name: k8s_setup
   roles:
-  - common_setup
   - k8s_setup

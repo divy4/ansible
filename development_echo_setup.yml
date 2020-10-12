@@ -7,6 +7,4 @@
   hosts: development_echo
   name: development_echo_setup
   roles:
-  - common_setup
-  - development
-  - development_echo
+  - development_echo_setup

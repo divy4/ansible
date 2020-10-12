@@ -3,8 +3,6 @@ all:
   children:
     localhost:
       children:
-        base:
-          hosts: localhost
         cache_server:
           hosts: localhost
         development:
