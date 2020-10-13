@@ -1,5 +1,5 @@
 ---
-- name: 'cache_server : Install squid package'
+- name: 'main : Install squid package'
   package:
     name:
     - squid
@@ -8,13 +8,13 @@
     mode: '644'
     owner: root
     src: squid.conf
-  name: 'cache_server : Copy squid config'
-- name: 'cache_server : Enable squid service'
+  name: 'main : Copy squid config'
+- name: 'main : Enable squid service'
   service:
     enabled: 'yes'
     name: squid
     state: started
-- name: 'cache_server : Allow traffic on port 3128'
+- name: 'main : Allow traffic on port 3128'
   ufw:
     direction: in
     proto: tcp

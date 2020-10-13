@@ -1,3 +1,0 @@
----
-- import_playbook: base_setup.yml
-- import_playbook: base_deploy.yml

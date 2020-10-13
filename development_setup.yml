@@ -7,5 +7,4 @@
   hosts: development
   name: development_setup
   roles:
-  - common_setup
-  - development
+  - development_setup
