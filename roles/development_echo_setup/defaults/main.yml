@@ -16,3 +16,11 @@ development_echo:
   install_sops:
     checksum: 'sha256:280CA39D21E6740DFA5332B12EF41698ACF014E5F277C5C296C61E83B4CCAD21'
     version: 3.6.0
+  install_vmware_horizon:
+    vmware_keymaps:
+      commit_hash: 11225642caff26dde823502cb206b35c34e45e92
+      version: 1.0-1
+    vmware_horizon_client:
+      commit_hash: ff9c1a56580a78046993a5a2d59ed1215101d20d
+      version: 1.0-1
+
