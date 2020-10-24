@@ -22,5 +22,5 @@ development_echo:
       version: 1.0-1
     vmware_horizon_client:
       commit_hash: ff9c1a56580a78046993a5a2d59ed1215101d20d
-      version: 1.0-1
+      version: 2006-1
 
