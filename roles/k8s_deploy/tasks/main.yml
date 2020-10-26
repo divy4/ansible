@@ -3,3 +3,4 @@
 - include_tasks: create_cluster.yml
 - include_tasks: install_cni_plugin.yml
 - include_tasks: install_ingress_controller.yml
+- include_tasks: apply_base_resources.yml
