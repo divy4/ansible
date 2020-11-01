@@ -1,14 +1,14 @@
 ---
 all:
   children:
-    dev:
+    stg:
       children:
         k8s:
           children:
             masters:
               children:
                 primary_master:
-                  hosts: k8s.dev.danivyit.com
-              hosts: k8s.dev.danivyit.com
+                  hosts: k8s.stg.danivyit.com
+              hosts: k8s.stg.danivyit.com
             workers:
-              hosts: k8s.dev.danivyit.com
+              hosts: k8s.stg.danivyit.com

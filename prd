@@ -1,14 +1,14 @@
 ---
 all:
   children:
-    dev:
+    prd:
       children:
         k8s:
           children:
             masters:
               children:
                 primary_master:
-                  hosts: k8s.dev.danivyit.com
-              hosts: k8s.dev.danivyit.com
+                  hosts: k8s.prd.danivyit.com
+              hosts: k8s.prd.danivyit.com
             workers:
-              hosts: k8s.dev.danivyit.com
+              hosts: k8s.prd.danivyit.com
