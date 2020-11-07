@@ -4,6 +4,9 @@ all:
     dev:
       children:
         development:
+          children:
+            development_echo:
+              hosts: dev-echo.dev.danivyit.com
           hosts: dev.dev.danivyit.com
         k8s:
           children:
