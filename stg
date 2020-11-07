@@ -3,6 +3,8 @@ all:
   children:
     stg:
       children:
+        development:
+          hosts: dev.stg.danivyit.com
         k8s:
           children:
             masters:

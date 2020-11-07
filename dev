@@ -3,6 +3,8 @@ all:
   children:
     dev:
       children:
+        development:
+          hosts: dev.dev.danivyit.com
         k8s:
           children:
             masters:

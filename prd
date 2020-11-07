@@ -3,6 +3,8 @@ all:
   children:
     prd:
       children:
+        development:
+          hosts: dev.prd.danivyit.com
         k8s:
           children:
             masters:
