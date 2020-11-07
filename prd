@@ -3,6 +3,11 @@ all:
   children:
     prd:
       children:
+        development:
+          children:
+            development_echo:
+              hosts: dev-echo.prd.danivyit.com
+          hosts: dev.prd.danivyit.com
         k8s:
           children:
             masters:

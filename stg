@@ -3,6 +3,11 @@ all:
   children:
     stg:
       children:
+        development:
+          children:
+            development_echo:
+              hosts: dev-echo.stg.danivyit.com
+          hosts: dev.stg.danivyit.com
         k8s:
           children:
             masters:
