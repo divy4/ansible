@@ -9,7 +9,7 @@
     cmd: >-
       find
       /tmp/kubernetes-apps/kubernetes-manifests/all/
-      /tmp/kubernetes-apps/kubernetes-manifests/{{ environment }}/
+      /tmp/kubernetes-apps/kubernetes-manifests/{{ env }}/
       -type f -name '*.yml' | xargs cat
     executable: sh
 - k8s:
@@ -22,4 +22,5 @@
     definition: '{{ resources.stdout }}'
     state: '{{ "present" if mode == "apply" else "absent" }}'
     wait: 'yes'
+    wait_timeout: 300 # wait 5 min for everything to come up
   name: 'apply_kubernetes_manifests : Wait change to take effect'
