@@ -9,7 +9,7 @@
     cmd: >-
       find
       /tmp/kubernetes-apps/kubernetes-manifests/all/
-      /tmp/kubernetes-apps/kubernetes-manifests/{{ environment }}/
+      /tmp/kubernetes-apps/kubernetes-manifests/{{ env }}/
       -type f -name '*.yml' | xargs cat
     executable: sh
 - k8s:
