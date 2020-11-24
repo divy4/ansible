@@ -17,7 +17,9 @@
     - nano # Basic text editor
     - nemo # File browser
     - nmap # Port scanning tool
+    - packer # VM template builder
     - shellcheck # Shell linter
+    - terraform # IaC provisioner
     - tmux # Teminal multiplexer
     - ttf-dejavu # More fonts
     - unzip # Unzip zip files
