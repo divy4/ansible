@@ -4,5 +4,5 @@ development:
   - dan
   install_tools:
     yq:
-      checksum: 'sha256:11A830FFB72AAD0EAA7640EF69637068F36469BE4F68A93DA822FBE454E998F8'
-      version: 3.2.1
+      checksum: 'sha256:ADBC6DD027607718AC74CEAC15F74115AC1F3CAEF68BABFB73246929D4FFB23C'
+      version: 3.4.1
