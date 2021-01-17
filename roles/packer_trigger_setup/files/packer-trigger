@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo 'test' | tee --append /var/log/packer-trigger

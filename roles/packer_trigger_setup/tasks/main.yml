@@ -1,0 +1,20 @@
+---
+- name: Copy trigger script
+  copy:
+    dest: /usr/local/sbin/packer-trigger
+    group: root
+    mode: '744'
+    owner: root
+    src: packer-trigger
+- name: Setup trigger service
+  copy:
+    dest: /etc/systemd/system/packer-trigger.service
+    group: root
+    mode: '644'
+    owner: root
+    src: packer-trigger.service
+- name: Enable trigger service
+  systemd:
+    daemon_reload: yes
+    enabled: yes
+    name: packer-trigger
