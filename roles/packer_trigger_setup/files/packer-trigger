@@ -1,3 +1,35 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-echo 'test' | tee --append /var/log/packer-trigger
+NETWORK_DEVICE=enp0s3
+
+declare -A SETTINGS
+SETTINGS['10.1.0.100/24']='bld dev.bld.danivyit.com common_deploy.yml development_deploy.yml'
+SETTINGS['10.1.1.100/24']='dev dev.dev.danivyit.com common_deploy.yml development_deploy.yml'
+SETTINGS['10.1.2.100/24']='stg dev.stg.danivyit.com common_deploy.yml development_deploy.yml'
+SETTINGS['10.1.3.100/24']='prd dev.prd.danivyit.com common_deploy.yml development_deploy.yml'
+SETTINGS['10.1.4.100/24']='wrk dev.wrk.danivyit.com common_deploy.yml development_deploy.yml'
+
+function main {
+  local settings inventory hostname roles
+  echo "Starting packer trigger at $(date)"
+  cd /packer/ansible
+  #shellcheck disable=SC2207
+  settings=( $(get_settings) )
+  inventory="${settings[0]}"
+  hostname="${settings[1]}"
+  roles=("${settings[@]:2}")
+  ansible-playbook --inventory "$inventory" --limit "$hostname" --extra-vars ansible_connection=local "${roles[@]}"
+}
+
+function get_settings {
+  local ip_address
+  ip_address="$(get_ip_address)"
+  echo "${SETTINGS[$ip_address]}"
+}
+
+function get_ip_address {
+  ip addr show "$NETWORK_DEVICE" | awk '$1 == "inet" {print $2}'
+}
+
+main 2>&1 | tee --append /var/log/packer-trigger
