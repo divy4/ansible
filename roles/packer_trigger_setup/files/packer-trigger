@@ -13,13 +13,21 @@ SETTINGS['10.1.4.100/24']='wrk dev.wrk.danivyit.com common_deploy.yml developmen
 function main {
   local settings inventory hostname roles
   echo "Starting packer trigger at $(date)"
-  cd /packer/ansible
+  # Figure out who I am
   #shellcheck disable=SC2207
   settings=( $(get_settings) )
   inventory="${settings[0]}"
   hostname="${settings[1]}"
   roles=("${settings[@]:2}")
-  ansible-playbook --inventory "$inventory" --limit "$hostname" --extra-vars ansible_connection=local "${roles[@]}"
+  # Execute ansible
+  cd /packer/ansible
+  ansible-playbook --inventory "$inventory" --limit "$hostname" --extra-vars \
+    ansible_connection=local "${roles[@]}" packer_trigger_deploy.yml
+  # Cleanup
+  cd /
+  rm --force --recursive /packer/ansible
+  echo "Packer trigger finished successfully at $(date)"
+  sleep 5 && rm "${BASH_SOURCE[0]}" &
 }
 
 function get_settings {
