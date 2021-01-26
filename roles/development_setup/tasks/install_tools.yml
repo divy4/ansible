@@ -25,16 +25,38 @@
     - ttf-dejavu # More fonts
     - unzip # Unzip zip files
     - zip # Zip zip files
-- get_url:
-    checksum: '{{ development.install_tools.yq.checksum }}'
-    dest: /usr/local/bin/yq
-    group: root
-    mode: '755'
-    owner: root
-    url: >-
-      https://github.com/mikefarah/yq/releases/download/{{
-      development.install_tools.yq.version }}/yq_linux_amd64
-  name: 'install_tools : Install yq'
+
+- name: 'install_yay : Create builder user'
+  user:
+    create_home: no
+    home: /tmp
+    name: aur_builder
+    password_lock: 'yes'
+    system: yes
+
+- name: 'install_yay : Grant builder user sudo access'
+  lineinfile:
+    path: /etc/sudoers.d/11-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- name: 'install_tools : Install yay'
+  become: yes
+  become_user: aur_builder
+  aur:
+    name:
+    - yay # YAML command line tool
+    use: makepkg
+
+- name: 'install_tools : Install yay packages'
+  become: yes
+  become_user: aur_builder
+  aur:
+    name:
+    - go-yq # YAML command line tool
+    use: yay
+
 - include_tasks: add_config_modules.yml
   vars:
     modules:
@@ -43,6 +65,7 @@
     - vim
     users:
     - root
+
 - include_tasks: add_config_modules.yml
   vars:
     modules:
@@ -52,13 +75,14 @@
     - git
     - ssh
     users: '{{ development.dev_users }}'
-- become_user: '{{ item[0] }}'
+
+- name: 'install_tools : Create directories'
+  become_user: '{{ item[0] }}'
   file:
     mode: '755'
     owner: '{{ item[0] }}'
     path: '{{ item[1] }}'
     state: directory
-  name: 'install_tools : Create directories'
   with_nested:
   - '{{ development.dev_users }}'
   - - '~/downloads'
