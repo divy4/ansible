@@ -3,13 +3,15 @@
   package:
     name:
     - git
-- git:
+
+- name: 'add_config_modules ({{ modules }}) : Clone config-files repo'
+  git:
     depth: 1
     dest: /tmp/config-files
     repo: 'https://github.com/divy4/config-files.git'
-  name: 'add_config_modules ({{ modules }}) : Clone config-files repo'
-- become_user: '{{ item[0] }}'
-  name: 'add_config_modules ({{ modules }}) : Load config module'
+
+- name: 'add_config_modules ({{ modules }}) : Load config module'
+  become_user: '{{ item[0] }}'
   shell: '"/tmp/config-files/install.sh" "{{ item[1] }}"'
   with_nested:
   - '{{ users }}'
