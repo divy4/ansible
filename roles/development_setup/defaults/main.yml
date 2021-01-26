@@ -2,7 +2,3 @@
 development:
   dev_users:
   - dan
-  install_tools:
-    yq:
-      checksum: 'sha256:ADBC6DD027607718AC74CEAC15F74115AC1F3CAEF68BABFB73246929D4FFB23C'
-      version: 3.4.1

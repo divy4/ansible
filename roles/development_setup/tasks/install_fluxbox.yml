@@ -15,9 +15,10 @@
     - xorg-xinit # xinit, starts X server
     - xorg-xmessage # X server message display, needed for when things go bad
     - xterm # A terminal
-- copy:
+
+- name: 'install_fluxbox : Copy xinitrc'
+  copy:
     dest: /etc/X11/xinit/xinitrc
     mode: '644'
     owner: root
     src: xinitrc
-  name: 'install_fluxbox : Copy xinitrc'
