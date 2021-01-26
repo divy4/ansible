@@ -1,6 +1,0 @@
----
-- name: 'install_remmina : Install packages'
-  package:
-    name:
-    - freerdp
-    - remmina

@@ -2,25 +2,3 @@
 development_echo:
   dev_users:
   - dan
-  install_helm:
-    helm2:
-      checksum: 'sha256:f3bec3c7c55f6a9eb9e6586b8c503f370af92fe987fcbf741f37707606d70296'
-      version: 2.17.0
-    helm3:
-      checksum: 'sha256:cacde7768420dd41111a4630e047c231afa01f67e49cc0c6429563e024da4b98'
-      version: 3.4.2
-  install_slack:
-    commit_hash: 9c99ffddf064c912afaa803da4e0d638523d6f94
-    subversion: 1
-    version: 4.11.3
-  install_sops:
-    checksum: 'sha256:B2252AA00836C72534471E1099FA22FAB2133329B62D7826B5AC49511FCC8997'
-    version: 3.6.1
-  install_vmware_horizon:
-    vmware_keymaps:
-      commit_hash: 11225642caff26dde823502cb206b35c34e45e92
-      version: 1.0-1
-    vmware_horizon_client:
-      commit_hash: 92fbff32ab15cd279147a8b2671fd54ac0a699a9
-      version: 2006-1
-
