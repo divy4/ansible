@@ -6,8 +6,7 @@ export DISPLAY=:0.0
 export XAUTHORITY="$HOME/.Xauthority"
 
 MONITOR_EVENTS=(\
-  --event create \
-  --event modify \
+  --event close_write \
   --event moved_to \
 )
 

@@ -25,7 +25,7 @@
     src: xinitrc
 
 - name: 'install_fluxbox : Create ~/.fluxbox/background/'
-  with_items: '{{ development.dev_users }}'
+  loop: '{{ development.dev_users }}'
   file:
     group: '{{ item }}'
     mode: '755'
@@ -33,12 +33,16 @@
     path: '~{{ item }}/.fluxbox/background/'
     state: directory
 
-- name: 'install_fluxbox : Install setbackground command'
+- name: 'install_fluxbox : Install background tools'
+  loop:
+  - fetchbackground
+  - setbackground
   copy:
-    dest: /usr/local/bin/setbackground
+    dest: /usr/local/bin/
+    group: root
     mode: '755'
     owner: root
-    src: setbackground
+    src: '{{ item }}'
 
 - name: 'install_fluxbox : Install background-updater service'
   copy:
@@ -53,7 +57,7 @@
     daemon_reload: yes
 
 - name: 'install_fluxbox : Enable background-updater service for all users'
-  with_items: '{{ development.dev_users }}'
+  loop: '{{ development.dev_users }}'
   become_user: '{{ item }}'
   systemd:
     enabled: yes
