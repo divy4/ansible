@@ -6,6 +6,7 @@
     - feh # Image viewer, needed for setting the background
     - fluxbox # Window manager
     - imagemagick # Image command line tool/screenshots
+    - inotify-tools # Tools for monitoring filesystem changes
     - ttf-ubuntu-font-family # Fonts, needed for fluxbox to start successfully
     - xclip # clipboard
     - xcompmgr # Transparency
@@ -22,3 +23,43 @@
     mode: '644'
     owner: root
     src: xinitrc
+
+- name: 'install_fluxbox : Create ~/.fluxbox/background/'
+  loop: '{{ development.dev_users }}'
+  file:
+    group: '{{ item }}'
+    mode: '755'
+    owner: '{{ item }}'
+    path: '~{{ item }}/.fluxbox/background/'
+    state: directory
+
+- name: 'install_fluxbox : Install background tools'
+  loop:
+  - fetchbackground
+  - setbackground
+  copy:
+    dest: /usr/local/bin/
+    group: root
+    mode: '755'
+    owner: root
+    src: '{{ item }}'
+
+- name: 'install_fluxbox : Install background-updater service'
+  copy:
+    dest: /etc/systemd/user/background-updater.service
+    group: root
+    mode: '644'
+    owner: root
+    src: background-updater.service
+
+- name: 'install_fluxbox : Reload Systemd units'
+  systemd:
+    daemon_reload: yes
+
+- name: 'install_fluxbox : Enable background-updater service for all users'
+  loop: '{{ development.dev_users }}'
+  become_user: '{{ item }}'
+  systemd:
+    enabled: yes
+    name: background-updater
+    scope: user
