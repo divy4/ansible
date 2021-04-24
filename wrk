@@ -6,4 +6,4 @@ all:
         development:
           children:
             development_echo:
-              hosts: dev.wrk.danivyit.com
+              hosts: dev.wrk.danivy.com

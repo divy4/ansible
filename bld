@@ -4,4 +4,4 @@ all:
     management:
       children:
         cache_server:
-          hosts: cache.bld.danivyit.com
+          hosts: cache.bld.danivy.com
