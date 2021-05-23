@@ -1,7 +1,2 @@
 ---
 - include_tasks: install_tools.yml
-- include_tasks: add_config_modules.yml
-  vars:
-    modules:
-    - fluxbox
-    users: '{{ development_echo.dev_users }}'
