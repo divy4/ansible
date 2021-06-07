@@ -20,6 +20,14 @@
 - name: 'install_tools : Install ruby gems'
   gem:
     name: bundler
+    user_install: no
+
+- name: 'install_tools : Copy ruby profile script'
+  copy:
+    dest: /etc/profile.d/
+    mode: '755'
+    owner: root
+    src: ruby_profile.sh
 
 - name: 'install_tools : Copy startvpn script'
   copy:
