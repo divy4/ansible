@@ -5,7 +5,9 @@
     - base-devel # Base development tools
     - bind # Network debugging tools
     - bmon # Network monitor
+    - breeze-icons # Icons for Dolphin file browser
     - code # GUI text editor
+    - dolphin # File browser
     - dos2unix # Convert LF <==> CRLF
     - expect # Make scripts pretend they're human
     - git # All the changes
@@ -15,7 +17,6 @@
     - jq # JSON command line tool
     - man # Manuals
     - nano # Basic text editor
-    - nemo # File browser
     - nmap # Port scanning tool
     - packer # VM template builder
     - shellcheck # Shell linter
